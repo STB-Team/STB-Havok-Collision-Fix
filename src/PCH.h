@@ -7,15 +7,20 @@
 #include <spdlog/sinks/basic_file_sink.h>
 #pragma warning(pop)
 
+#include <algorithm>
 #include <atomic>
 #include <cmath>
 #include <cstdint>
+#include <cstring>
 #include <filesystem>
+#include <initializer_list>
 #include <limits>
 #include <mutex>
 #include <optional>
 #include <string>
 #include <unordered_set>
+#include <utility>
+#include <vector>
 
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
@@ -41,6 +46,23 @@ inline std::uintptr_t Rel32Target(std::uintptr_t a_site, std::uint8_t a_opcode)
 		return 0;
 	}
 	return a_site + 5 + *reinterpret_cast<const std::int32_t*>(a_site + 1);
+}
+
+// True when the code at a_site is exactly a_bytes (the game's original, not patched by another mod).
+inline bool CodeIs(std::uintptr_t a_site, std::initializer_list<std::uint8_t> a_bytes)
+{
+	return std::memcmp(reinterpret_cast<const void*>(a_site), a_bytes.begin(), a_bytes.size()) == 0;
+}
+
+// Replaces the original bytes a_from at a_site with a_to (same length); false and nothing written on a mismatch.
+inline bool PatchCode(std::uintptr_t a_site, std::initializer_list<std::uint8_t> a_from,
+	std::initializer_list<std::uint8_t> a_to)
+{
+	if (a_from.size() != a_to.size() || !CodeIs(a_site, a_from)) {
+		return false;
+	}
+	REL::safe_write(a_site, a_to.begin(), a_to.size());
+	return true;
 }
 
 // Logs the first few events in full, then every N-th, so a broken mesh touched every frame cannot flood the log.
