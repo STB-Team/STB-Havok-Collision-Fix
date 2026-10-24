@@ -91,8 +91,12 @@ time.
 
 ## Credits and license
 
-Engine analysis and code: STB Team (Skyrim True Believer). The crash classes were first described publicly by the
-closed-source CollisionSentinel mod; this is an independent implementation from our own reverse engineering of
-SkyrimSE.exe 1.5.97, written to have an open, auditable fix.
+Engine analysis and code: STB Team (Skyrim True Believer). The crash classes were first described publicly by two
+closed-source mods: CollisionSentinel by Tesfan (Nexus 181445; `HitSort`, `MoppAtLoad`, `CompressedMeshKeys`) and
+Havok Solver Crash Fix by Zzyxzz (Nexus 194392; the physics fixes from `SolverBuffer` to `FootIkReserve`). This is an
+independent implementation from our own reverse engineering of SkyrimSE.exe 1.5.97, written to have an open,
+auditable fix; no code from either mod is used.
+
+CommonLibSSE-NG (MIT) is included as a submodule under its own license.
 
 Copyright (C) 2026 STB Team. Licensed under the GNU General Public License v3.0 or later, see [LICENSE](LICENSE).
