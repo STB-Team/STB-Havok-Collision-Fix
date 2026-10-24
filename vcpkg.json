@@ -1,6 +1,6 @@
 {
   "name": "stbhavokcollisionfix",
-  "version-string": "1.0.0",
+  "version-string": "1.1.0",
   "description": "STB Havok Collision Fix: no crashes or hangs from broken collision meshes (Skyrim SE 1.5.97)",
   "homepage": "https://github.com/STB-Team/STB-Havok-Collision-Fix",
   "license": "GPL-3.0-or-later",

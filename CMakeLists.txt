@@ -24,7 +24,7 @@ set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" CACHE STR
 
 project(
 	STBHavokCollisionFix
-	VERSION 1.0.0
+	VERSION 1.1.0
 	LANGUAGES CXX
 )
 
@@ -63,6 +63,20 @@ set(SOURCES
 	src/MoppLoadFix.cpp
 	src/CompressedMeshFix.h
 	src/CompressedMeshFix.cpp
+	src/SolverBufferFix.h
+	src/SolverBufferFix.cpp
+	src/IslandUnlockFix.h
+	src/IslandUnlockFix.cpp
+	src/ListenerRemoveFix.h
+	src/ListenerRemoveFix.cpp
+	src/PendingQueueFix.h
+	src/PendingQueueFix.cpp
+	src/WorldLockFix.h
+	src/WorldLockFix.cpp
+	src/BatchFix.h
+	src/BatchFix.cpp
+	src/FootIkFix.h
+	src/FootIkFix.cpp
 	src/main.cpp
 )
 

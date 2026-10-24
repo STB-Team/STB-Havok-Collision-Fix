@@ -10,6 +10,15 @@ void Settings::Load()
 	hitSort = read("HitSort", true);
 	moppAtLoad = read("MoppAtLoad", true);
 	compressedMeshKeys = read("CompressedMeshKeys", true);
-	logger::info("settings ({}): HitSort={} MoppAtLoad={} CompressedMeshKeys={}",
-		std::filesystem::exists(path) ? file : "no ini, defaults"s, hitSort, moppAtLoad, compressedMeshKeys);
+	solverBuffer = read("SolverBuffer", true);
+	islandUnlock = read("IslandUnlock", true);
+	listenerRemove = read("ListenerRemove", true);
+	pendingQueue = read("PendingQueue", true);
+	worldLock = read("WorldLock", true);
+	batchCheck = read("BatchCheck", true);
+	footIkReserve = read("FootIkReserve", true);
+	logger::info("settings ({}): HitSort={} MoppAtLoad={} CompressedMeshKeys={} SolverBuffer={} IslandUnlock={} "
+				 "ListenerRemove={} PendingQueue={} WorldLock={} BatchCheck={} FootIkReserve={}",
+		std::filesystem::exists(path) ? file : "no ini, defaults"s, hitSort, moppAtLoad, compressedMeshKeys,
+		solverBuffer, islandUnlock, listenerRemove, pendingQueue, worldLock, batchCheck, footIkReserve);
 }
